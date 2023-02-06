@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/counter_model_provider.dart';
-import 'package:flutter_app/widgets/state_widget.dart';
-import 'package:provider/provider.dart';
-// import 'package:flutter_app/pages/home_page.dart';
+import 'package:flutter_app/widgets/learn_widget.dart';
 
 void main(List<String> args) => runApp(const MyApp());
 
@@ -12,10 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            body: ChangeNotifierProvider(
-      create: (context) => CounterModel(),
-      child: const Counter(text: 'Counter App!'),
-    )));
+      home: LearnWidget(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
