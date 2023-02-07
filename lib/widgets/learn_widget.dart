@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LearnWidget extends StatelessWidget {
   LearnWidget({super.key});
 
-  final lists = List.generate(20, (index) => index);
+  final lists = List.generate(5, (index) => index);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,12 @@ class LearnWidget extends StatelessWidget {
 
             Expanded(
                 child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                     itemCount: lists.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Column(children: [
                           Box(text: 'Box_ $index'),
                           const SizedBox(
@@ -54,15 +56,16 @@ class Box extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.hardEdge,
         margin: const EdgeInsets.symmetric(vertical: 5),
         height: 200,
-        width: double.infinity,
+        width: 120,
         decoration: BoxDecoration(
             color: Colors.green.shade200,
             borderRadius: BorderRadius.circular(10)),
         child: FittedBox(
             alignment: Alignment.center,
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
             child: Image.asset('images/forest.jpg')));
   }
 }
